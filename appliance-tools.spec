@@ -18,7 +18,6 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires: livecd-tools >= 020 curl rsync kpartx
 Requires: zlib
 Requires: qemu-img
-Requires: python-argparse
 BuildRequires: python
 BuildArch: noarch
 ExcludeArch: ppc64 s390 s390x
