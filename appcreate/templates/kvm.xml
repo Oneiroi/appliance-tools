@@ -1,0 +1,53 @@
+<domain type='APPLIANCE_DOMAIN_TYPE'>
+  <name><![CDATA[APPLIANCE_NAME]]></name>
+  <uuid><![CDATA[APPLIANCE_UUID]]></uuid>
+  <memory><![CDATA[APPLIANCE_MEMORY]]></memory>
+  <currentMemory><![CDATA[APPLIANCE_CMEMORY]]></currentMemory>
+  <vcpu><![CDATA[APPLIANCE_NVCPU]]></vcpu>
+  <os>
+    <type arch='APPLIANCE_ARCH' machine='APPLIANCE_OS_SHORTNAME'>hvm</type>
+    <boot dev='cdrom'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <pae/>
+  </features>
+  <clock offset='utc'>
+    <timer name='pit' tickpolicy='delay'/>
+  </clock>
+  <on_poweroff><![CDATA[APPLIANCE_POWEROFF]]></on_poweroff>
+  <on_reboot><![CDATA[APPLIANCE_REBOOT]]></on_reboot>
+  <on_crash><![CDATA[APPLIANCE_CRASH]]></on_crash>
+  <devices>
+    <emulator><![CDATA[APPLIANCE_EMULATOR]]></emulator>
+    <disk type='file' device='disk'>
+      <driver name='APPLIANCE_DISK_DRIVER_NAME' type='APPLIANCE_DISK_TYPE' cache='APPLIANCE_DISK_CACHE'/>
+      <source file='APPLIANCE_DISK_PATH'/>
+      <target dev='APPLIANCE_DISK_DEV' bus='APPLIANCE_DISK_BUS'/>
+    </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <target dev='hdc' bus='ide'/>
+      <readonly/>
+      <address type='drive' controller='0' bus='1' unit='0'/>
+    </disk>
+    <controller type='ide' index='0'/>
+    <interface type='APPLIANCE_NIC_TYPE'>
+      <mac address='APPLIANCE_NIC_MAC'/>
+      <source bridge=''/>
+      <model type='virtio'/>
+    </interface>
+    <serial type='pty'>
+      <target port='0'/>
+    </serial>
+    <console type='pty'>
+      <target port='0'/>
+    </console>
+    <input type='mouse' bus='ps2'/>
+    <graphics type='vnc' port='-1' autoport='yes' keymap='en-gb'/>
+    <video>
+      <model type='cirrus' vram='%d' heads='1'/>
+    </video>
+  </devices>
+</domain>
